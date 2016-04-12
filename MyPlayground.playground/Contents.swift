@@ -4,5 +4,13 @@ import UIKit
 
 var str = "Hello, playground"
 print(str)
+NSLog("call %@",#file)
 NSLog("call %@",#function)
-NSLog("call %@",NSThread.callStackSymbols())
+NSLog("call %d",#line)
+//NSLog("call %@",NSThread.callStackSymbols())
+let strL: String = "Hello,world"
+print(strL)
+str = strL
+//strL = "an"
+
+
