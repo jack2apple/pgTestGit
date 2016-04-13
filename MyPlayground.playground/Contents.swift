@@ -26,7 +26,7 @@ let http404Error = (404, "Not Found")
 print(http404Error.0,http404Error.1)
 print(http404Error.1)
 print(http404Error)
-print(http404Error, possibleNumber,separator: "^", terminator: "")
+//print(http404Error, possibleNumber,separator: "^", terminator: "")
 let possibleNumber: String? = "123"
 print(possibleNumber)
 print(possibleNumber!)
@@ -42,18 +42,50 @@ if (possibleNumber2 != nil) {
 }
 let age = 3
 assert(age >= 0, "less")
+var aStr: String? = nil
+print(aStr ?? "eee")
 #endif //1st:The Basics
 
-//#if false //2nd:Basic Operators
+#if false //2nd:Basic Operators and 3:Strings and Characters
 let a = 0
-//#endif //2nd:Basic Operators
+for var b in 1...5 {
+    print("\(b) * 3 = \(b * 3)")
+}
+for var c in 1..<5 {
+    print("\(c) * 3 = \(c * 3)")
+}
+let c = false
+var d = true
+if !c {
+    print(c)
+}
+if c || d {
+    print(c)
+}
+var str = "123"
+func changestr( a: String) {
+    //a += "456"
+}
+changestr(str)
+print(str)
+for chan in str.characters {
+    print(chan)
+}
+let catC: [Character] = ["C","a","t","!"]
+let catS = String(catC)
+print(catC)
+print(catS)
+for c in catC {
+    print(c)
+}
+for c in catS.characters {
+    print(c)
+}
+#endif //2nd:Basic Operators and 3:Strings and Characters
 
+//#if false //4:Collection Types
 
-
-
-
-
-
+//#endif //4:Collection Types
 
 
 
