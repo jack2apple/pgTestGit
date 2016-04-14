@@ -83,24 +83,81 @@ for c in catS.characters {
 }
 #endif //2nd:Basic Operators and 3:Strings and Characters
 
-//#if false //4:Collection Types
+#if false //4:Collection Types and 5:Control Flow 6:function
+var shopingList = ["ap","ba","or"]
+shopingList[2] = "kk"
+shopingList.insert("ww", atIndex: 3)
+shopingList.removeAtIndex(0)
+shopingList
+print(shopingList)
+var favor: Set = ["Rock","classical","Hip","Hip"]
+favor
+print(favor)
+for var i in 1...5 {
+    i += 1
+    print(i)
+}
+for var index = 0; index < 4; ++index {
+    //index += 1
+    print(index)
+}
+var a = 1
+repeat {
+    print(a)
+    a += 1
+} while a < 10
+// prints "Hello Bill and Ted!"
+func sayHello(person: String,_ anotherPerson: String) -> String{
+    return "Hello \(person) and \(anotherPerson)"
+}
+print(sayHello("Bill", "Ted"))
+func arithmeticMean(a: Double, numbers: Double...) -> Double {
+    var total: Double = 0
+    for number in numbers {
+        total += number
+    }
+    return total / Double(numbers.count)
+}
+arithmeticMean(1, numbers: 2, 3, 4, 5)
 
-//#endif //4:Collection Types
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var str = "123"
+func changestr(inout a: String) {
+    a += "456"
+}
+changestr(&str)
+print(str)
+var tempfuntion: (inout String) -> Void = changestr
+tempfuntion(&str)
+tempfuntion(&str)
+let temfun2 = changestr
+temfun2(&str)
+print(temfun2)
+func aFun(a: Int){
+    print("aFun")
+}
+func bFun(a: Int){
+    print("bFun")
+}
+var avarFun = aFun
+avarFun(2)
+print(avarFun)
+func chang(inout f: (Int) -> ()) {
+    f = bFun
+}
+chang(&avarFun)
+print(avarFun)
+avarFun(2)
+func chooseStepFunction(backwards: Bool) -> (Int) -> Int {
+    var kk = 5
+    print(kk)
+    func stepForward(input: Int) -> Int { kk += 1;return input + 3 }
+    func stepBackward(input: Int) -> Int { return input - 1 }
+    print(stepForward(kk))
+    print(kk)
+    return backwards ? stepBackward : stepForward
+}
+chooseStepFunction(true)
+#endif //4:Collection Types and 5:Control Flow 6: Function
 
 
 
