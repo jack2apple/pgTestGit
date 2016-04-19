@@ -159,6 +159,182 @@ func chooseStepFunction(backwards: Bool) -> (Int) -> Int {
 chooseStepFunction(true)
 #endif //4:Collection Types and 5:Control Flow 6: Function
 
+#if false //7: Closures
+var str = "123"
+func changestr() {
+    str += "456"
+}
+changestr()
+print(str)
+let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+names.sort()
+func backwards(s1: String, s2: String) -> Bool {
+    return s1 > s2
+}
+var reversed = names.sort(backwards)
+reversed = names.sort( { (s1: String, s2: String) -> Bool in return s1 > s2 } )
+reversed = names.sort( { s1, s2 in return s1 > s2 } )
+reversed = names.sort( { s1, s2 in s1 > s2 } )
+reversed = names.sort( { $0 > $1 } )
+reversed = names.sort( > )
+reversed = names.sort(){$0 > $1}
+reversed = names.sort {$0 > $1}
+func makeIncrementor(forIncrement amount: Int) -> () -> Int {
+    var runningTotal = 0
+    func incrementor() -> Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementor
+}
+let incrementByTen = makeIncrementor(forIncrement: 10)
+incrementByTen()
+incrementByTen()
+
+let incrementBySeven = makeIncrementor(forIncrement: 7)
+incrementBySeven()
+
+var incrementByVar = makeIncrementor(forIncrement: 6)
+incrementByVar()
+incrementByVar = makeIncrementor(forIncrement: 3)
+incrementByVar()
+incrementByVar = incrementBySeven
+incrementByVar()
+incrementByVar()
+incrementBySeven()
+
+var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+print(customersInLine.count)
+// prints "5"
+let customerProvider = {customersInLine.removeAtIndex(0) }
+print(customersInLine.count)
+// prints "5"
+print("Now serving \(customerProvider())!")
+// prints "Now serving Chris!"
+print(customersInLine.count)
+print(customerProvider)
+#endif //7: Closures
+#if false //Class  & ARC
+struct SomeStructure {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 1 }
+}
+enum SomeEnumeration {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 6
+    }
+}
+class SomeClass {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 27
+    }
+    static var overrideableComputedTypeProperty: Int {
+        return 107
+    }
+}
+print(SomeStructure.storedTypeProperty)
+// 输出 "Some value." 
+SomeStructure.storedTypeProperty = "Another value."
+print(SomeStructure.storedTypeProperty)
+// 输出 "Another value.” 
+print(SomeEnumeration.computedTypeProperty)
+// 输出 "6" 
+print(SomeClass.computedTypeProperty)
+// 输出 "27"
+print(SomeClass.overrideableComputedTypeProperty)
+struct Size {
+    var width = 0.0
+    var height: SomeClass
+}
+let some = SomeClass()
+let twoByTwo = Size(width: 2.0, height: some)
+print(twoByTwo)
+class Vehicle {
+    var numberOfWheels = 0
+    var description: String {
+        return "\(numberOfWheels) wheel(s)"
+    }
+}
+class Bicycle: Vehicle {
+    init(d: Int) {
+        super.init()
+        numberOfWheels = d
+    }
+}
+let bicycle = Bicycle(d:8)
+print("Bicycle: \(bicycle.description)")
+// Bicycle: 2 wheel(s)
+class Food {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+    convenience init() {
+        self.init(name: "[Unnamed]")
+    }
+}
+let namedMeat = Food(name: "Bacon")
+print(namedMeat.name)
+let mysteryMeat = Food()
+print(mysteryMeat.name)
+
+class RecipeIngredient: Food {
+    var quantity: Int
+    init(name: String, quantity: Int) {
+        self.quantity = quantity
+        super.init(name: name)
+    }
+    convenience override init(name: String) {
+        self.init(name: name, quantity: 1)
+    }
+}
+let oneMysteryItem = RecipeIngredient()
+print(oneMysteryItem.name)
+print(oneMysteryItem.quantity)
+
+let oneBacon = RecipeIngredient(name: "Bacon")
+print(oneBacon.name)
+print(oneBacon.quantity)
+
+let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)
+print(sixEggs.name)
+print(sixEggs.quantity)
+class Person {
+    let name: String
+    init(name: String) {
+        self.name = name
+        print("\(name) is being initialized")
+    }
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}
+
+var reference1: Person?
+var reference2: Person?
+var reference3: Person?
+reference1 = Person(name: "John Appleseed")
+Person(name: "John")
+reference2 = reference1
+reference3 = reference1
+reference1 = nil
+reference2 = nil
+reference3 = nil
+#endif //Class & ARC
+
+
+
+
+
+
+
+
+
+
+
 
 
 
