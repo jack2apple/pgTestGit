@@ -324,8 +324,8 @@ reference1 = nil
 reference2 = nil
 reference3 = nil
 #endif //Class & ARC
-
-
+#if false //Class  & ARC
+#endif //Class & ARC
 
 
 
