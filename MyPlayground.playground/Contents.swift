@@ -419,8 +419,10 @@ for thing in things {
 }
 #endif //Class & ARC
 #if false //Nested Types
-#endif //Nested Types
+#endif //Nested Types   
+    print("new start")
 
+var count = 2
 
 
 
